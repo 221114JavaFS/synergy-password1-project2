@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: alexa
-=======
-Built-By: jad47
->>>>>>> aeb32441e7faa3baf77365b41dcd732d4993d937
 Build-Jdk: 17.0.4.1
 Created-By: Maven Integration for Eclipse
 
