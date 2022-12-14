@@ -37,7 +37,7 @@ create table claims(
 	clain_description Varchar(50),
 	amount float check (amount>0),
 	status varchar(20) default 'pending',
-	submission_date varchar(12),
-	decision_date varchar(12) default null,
+	submission_date DATE,
+	decision_date DATE default null,
 	foreign key (user_id) references user_info(user_id)
 );
