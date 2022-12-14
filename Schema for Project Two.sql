@@ -6,7 +6,7 @@ first_name VARCHAR(100) NOT NULL,
 last_name VARCHAR(100) NOT NULL,
 DoB DATE NOT NULL,
 SSN VARCHAR(11) NOT NULL,
-address VARCHAR(100),
+address VARCHAR(100) NOT NULL,
 current_employee BOOLEAN NOT NULL,
 current_subscriber BOOLEAN NOT NULL
 );
@@ -29,4 +29,14 @@ amount INT NOT NULL,
 -- im not sure if due date is exactly what we want 
 due_date DATE,
 description VARCHAR(100) NOT NULL
+);
+
+create table claims(
+	id SERIAL primary key CHECK(id>0)
+	user_id foreign key references user_info(user_id),
+	clain_description Varchar(50),
+	amount double check (amount>0),
+	status varchar(20) default 'pending',
+	submission_date varchar(12),
+	decision_date varchar(12) default null
 );
