@@ -32,11 +32,12 @@ description VARCHAR(100) NOT NULL
 );
 
 create table claims(
-	id SERIAL primary key CHECK(id>0)
-	user_id foreign key references user_info(user_id),
+	id SERIAL primary key CHECK(id>0),
+	user_id INT not null, 
 	clain_description Varchar(50),
-	amount double check (amount>0),
+	amount float check (amount>0),
 	status varchar(20) default 'pending',
 	submission_date varchar(12),
-	decision_date varchar(12) default null
+	decision_date varchar(12) default null,
+	foreign key (user_id) references user_info(user_id)
 );
