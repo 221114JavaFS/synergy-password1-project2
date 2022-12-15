@@ -1,9 +1,22 @@
 package com.revature.services;
 
-public class ClaimsService {
+import java.util.List;
 
-	public ClaimsService() {
-		// TODO Auto-generated constructor stub
+import com.revature.daos.ClaimDAOImpl;
+import com.revature.models.PolicyClaim;
+
+
+
+public class ClaimsService {
+	private ClaimDAOImpl claimDAO = new ClaimDAOImpl();
+	
+	public List<PolicyClaim> getClaims(){
+		return claimDAO.getClaims();
+	}
+	
+	public void addClaim(PolicyClaim newClaim) {
+		claimDAO.addClaim(newClaim);
+
 	}
 
 }

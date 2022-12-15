@@ -34,14 +34,6 @@ public class PolicyClaim {
 		this.description = description;
 	}
 	
-	public int getUser() {
-		return user_id;
-	}
-	
-	public void setUser(int user_id) {
-		this.user_id = user_id;
-	}
-	
 	public double getAmount() {
 		return amount;
 	}
