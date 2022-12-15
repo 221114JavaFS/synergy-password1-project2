@@ -1,11 +1,12 @@
 package com.revature.models;
 
 public class PolicyClaim {
-
+	private int claim_id;
+	private int user_id;
 	private String description;
-	private String user;
 	private double amount;
 	private String status="pending";
+	
 	//there might be more variables but these work for now. 
 	public PolicyClaim() {
 		
@@ -13,10 +14,10 @@ public class PolicyClaim {
 	
 	
 	
-	public PolicyClaim(String description, String user, double amount) {
+	public PolicyClaim(String description, int user_id, double amount) {
 		super();
 		this.description = description;
-		this.user = user;
+		this.user_id = user_id;
 		this.amount = amount;
 	}
 
