@@ -12,7 +12,8 @@ public class User {
 	private boolean currentEmployee;
 	private boolean currentSubscriber;
 	
-	
+
+
 	//constructor for creating a new user
 	public User(String firstName, String lastName, String email, String password, String dateOfBirth,
 			String socialSecurityNumber, String address, boolean currentEmployee, boolean currentSubscriber) {
@@ -30,12 +31,51 @@ public class User {
 	
 	
 
-	//constructor for logging in
+	//constructor for logging in part 1
 	public User(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
+
+	
+	//constructor for logging in part 2
+	public User(String user_id, String firstName, String lastName, String email, String password, String dateOfBirth,
+			String socialSecurityNumber, String address, boolean currentEmployee, boolean currentSubscriber) {
+		super();
+		this.user_id = user_id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.dateOfBirth = dateOfBirth;
+		this.socialSecurityNumber = socialSecurityNumber;
+		this.address = address;
+		this.currentEmployee = currentEmployee;
+		this.currentSubscriber = currentSubscriber;
+	}
+
+
+
+	public User() {
+		super();
+	}
+	
+	
+	
+	
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+
 
 	public String getFirstName() {
 		return firstName;
