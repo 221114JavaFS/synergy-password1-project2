@@ -44,6 +44,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 		}
 	}
 
+	//user_id can be passed in to avoid hard coding one in.
 	@Override
 	public void addClaim(PolicyClaim newClaim) {
 		try (Connection connection = ConnectionUtil.getConnection()) {
@@ -66,6 +67,56 @@ public class ClaimDAOImpl implements ClaimDAO {
 
 		}
 
+	}
+
+	@Override
+	public List<PolicyClaim> getClaimsByUser(int user_id) {
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			//get list from sql
+			String sql = "SELECT * FROM claim WHERE user_id="+user_id;
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			List<PolicyClaim> list = new ArrayList<>();
+			
+			//got through results to get info from claims and make a list from them. 
+			while (result.next()) {
+				PolicyClaim claim = new PolicyClaim();
+				claim.setClaim_id(result.getInt("claim_id"));
+				claim.setUser_id(result.getInt("user_id"));
+				claim.setDescription("claim_description");
+				claim.setAmount(result.getDouble("amount"));
+				claim.setStatus(result.getString("status"));
+				//these might need to be checked when null
+				claim.setSubmission_date(result.getDate("submission_date"));
+				claim.setDecision_date(result.getDate("decidion_date"));
+				
+				list.add(claim);
+			}
+
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public void updateClaim(String newStatus, int claim_id) {
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			
+			String sql = "UPDATE claim SET status=? WHERE claim_id=?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, newStatus);
+			statement.setInt(2, claim_id);
+
+			statement.execute();
+			
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
 	}
 
 }

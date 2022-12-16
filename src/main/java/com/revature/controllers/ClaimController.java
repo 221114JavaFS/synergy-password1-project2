@@ -26,12 +26,26 @@ public class ClaimController implements Controller{
 	};
 	
 	
+	private Handler updateClaim =(ctx)->{
+		String newStatus = ctx.body();
+		claimsService.updateClaim(newStatus, 0);//zero should be changed by the login feature stuff
+		ctx.status(200);
+	};
+	
+	private Handler getMyClaims =(ctx)->{
+		List<PolicyClaim> list = claimsService.getClaimsByUser(0);//zero should be changed by the login feature stuff
+		ctx.json(list);
+		ctx.status(200);
+	};
+	
+	
 	@Override
 	public void addRoutes(Javalin app) {
 		// TODO Auto-generated method stub
 		app.get("/claims", getClaims);
 		app.post("/claims", addClaim);
-		
+		app.post("/update", updateClaim);
+		app.get("/myclaims", getMyClaims);
 		
 	}
 

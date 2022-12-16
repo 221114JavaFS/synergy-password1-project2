@@ -18,5 +18,13 @@ public class ClaimsService {
 		claimDAO.addClaim(newClaim);
 
 	}
+	
+	public  List<PolicyClaim> getClaimsByUser(int user_id){
+		return claimDAO.getClaimsByUser(user_id);
+	}
+	
+	public  void updateClaim(String newStatus,int  claim_id) {
+		claimDAO.updateClaim(newStatus, claim_id);
+	}
 
 }
