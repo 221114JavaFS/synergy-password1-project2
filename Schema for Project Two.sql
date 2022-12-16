@@ -42,7 +42,7 @@ CREATE TABLE payments(
 create table claim(
 	claim_id SERIAL primary key CHECK(claim_id > 0),
 	user_id INT not null, 
-	clain_description Varchar(50),
+	claim_description Varchar(50),
 	amount float check (amount>0),
 	status varchar(20) default 'pending',
 	submission_date DATE,
@@ -68,3 +68,5 @@ SELECT user_id, first_name, last_name, vaccine_type, vaccination_date
 FROM covid_info 
 JOIN user_info USING (user_id)
 WHERE user_id = 2;
+
+
