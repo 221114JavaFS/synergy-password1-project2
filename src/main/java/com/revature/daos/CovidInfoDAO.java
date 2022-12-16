@@ -15,7 +15,7 @@ public interface CovidInfoDAO {
 	public abstract boolean addCovidInfo(CovidInfo covidinfo);
 	
 	// update covid card, the placehaolders value can just resend the entire update. 
-	public abstract boolean updateCovidInfo(CovidInfo covidinfo);
+	public abstract boolean updateCovidInfo(int covidId, String vaccine_type, String vaccination_date);
 	
 	
 	public abstract boolean deleteCovidInfoById(int covid_id);
