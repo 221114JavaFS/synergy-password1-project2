@@ -72,6 +72,19 @@ public class UserController implements Controller{
 	};
 	
 	
+	
+	Handler viewAllAccounts = (ctx) ->{
+		if(userService.viewAllAccounts() == null) { //returns null if no accounts in the database
+			ctx.json("No Accounts created!");
+			ctx.status(404);
+		}else {  //else there are accounts in the database and it will show them
+			ctx.json(userService.viewAllAccounts());
+			ctx.status(200);
+		}
+		
+	};
+	
+	
 	@Override
 	public void addRoutes(Javalin app) {
 		app.get("/login", login);

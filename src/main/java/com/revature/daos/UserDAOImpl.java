@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.models.User;
 import com.revature.utils.ConnectionUtil; //Will throw an error until we have the database connection
@@ -70,6 +73,45 @@ public class UserDAOImpl implements UserDAO {
 			}
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+
+	@Override
+	public List<User> viewAllUsers() {
+		try(Connection connection = ConnectionUtil.getConnection()){
+			String sql = "Select * FROM user_info;";
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			
+			List<User> list = new ArrayList<>(); //creates new list for user objects
+			
+			
+			
+			while(result.next()) {
+				User user = new User();
+				
+				user.setUser_id(result.getString("user_id")); 
+				user.setFirstName(result.getString("first_name"));
+				user.setLastName(result.getString("last_name"));
+				user.setEmail(result.getString("email"));
+				user.setPassword(result.getString("password"));
+				user.setDateOfBirth(result.getString("DoB"));
+				user.setSocialSecurityNumber(result.getString("SSN"));
+				user.setAddress(result.getString("address"));
+				user.setCurrentEmployee(result.getBoolean("current_employee"));
+				user.setCurrentSubscriber(result.getBoolean("current_subscriber"));
+				
+				list.add(user); //adds user object to list
+			}
+			return list; //returns list of user object
+			
+			
+			
+			
+		}catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
