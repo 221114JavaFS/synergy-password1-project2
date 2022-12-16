@@ -13,6 +13,9 @@ import com.revature.utils.ConnectionUtil;
 
 public class ClaimDAOImpl implements ClaimDAO {
 
+	//maybe add a getClaimsMinusAgent --for agents not to see their own claims
+	//essentially the same except sql= "SELECT * FROM claim WHERE NOT user_id= "+ user_id
+	
 	@Override
 	public List<PolicyClaim> getClaims() {
 		try (Connection connection = ConnectionUtil.getConnection()) {
@@ -68,7 +71,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 		}
 
 	}
-
+	
 	@Override
 	public List<PolicyClaim> getClaimsByUser(int user_id) {
 		try (Connection connection = ConnectionUtil.getConnection()) {

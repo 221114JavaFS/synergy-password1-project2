@@ -70,3 +70,15 @@ JOIN user_info USING (user_id)
 WHERE user_id = 2;
 
 
+
+INSERT INTO claim(user_id, claim_description, amount, submission_date) VALUES 
+(2,'test description', 104, '2022-12-16'),
+(1,'test description', 99, '2022-12-16'),
+(2,'test description', 100, '2022-12-16'),
+(1,'test description', 101, '2022-12-16'),
+(2,'test description', 102, '2022-12-16'),
+(3,'test description', 40, '2022-12-16');
+SELECT * FROM claim WHERE user_id=2;
+UPDATE claim SET status='accepted' WHERE claim_id=2;
+SELECT * from claim where NOT user_id=2;
+
