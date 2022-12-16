@@ -28,12 +28,12 @@ public class ClaimController implements Controller{
 	
 	private Handler updateClaim =(ctx)->{
 		String newStatus = ctx.body();
-		claimsService.updateClaim(newStatus, 0);//zero should be changed by the login feature stuff
+		claimsService.updateClaim(newStatus, 2);//two should be changed by the login feature stuff
 		ctx.status(200);
 	};
 	
 	private Handler getMyClaims =(ctx)->{
-		List<PolicyClaim> list = claimsService.getClaimsByUser(0);//zero should be changed by the login feature stuff
+		List<PolicyClaim> list = claimsService.getClaimsByUser(2);//two should be changed by the login feature stuff
 		ctx.json(list);
 		ctx.status(200);
 	};

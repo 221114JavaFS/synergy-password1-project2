@@ -53,7 +53,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			int index=1;
-			statement.setInt(index++, 12);//all claims will have an user_id of 12 CHANGER THIS later!!!
+			statement.setInt(index++, 2);//all claims will have an user_id of 12 CHANGER THIS later!!!
 			statement.setString(index++, newClaim.getDescription());
 			statement.setDouble(index++, newClaim.getAmount());
 			statement.setDate(index++,newClaim.getSubmission_date());
