@@ -3,23 +3,20 @@ package com.revature.models;
 public class CovidInfo {
 	int covidId;
 	int user_id;
-	boolean vaccinated;
 	String vaccine_type;
 	String vaccination_date;
 	
-	public CovidInfo(int covidId, int user_id, boolean vaccinated, String vaccine_type, String vaccination_date) {
+	public CovidInfo(int covidId, int user_id, String vaccine_type, String vaccination_date) {
 		super();
 		this.covidId = covidId;
 		this.user_id = user_id;
-		this.vaccinated = vaccinated;
 		this.vaccine_type = vaccine_type;
 		this.vaccination_date = vaccination_date;
 	}
 
-	public CovidInfo(int user_id, boolean vaccinated, String vaccine_type, String vaccination_date) {
+	public CovidInfo(int user_id, String vaccine_type, String vaccination_date) {
 		super();
 		this.user_id = user_id;
-		this.vaccinated = vaccinated;
 		this.vaccine_type = vaccine_type;
 		this.vaccination_date = vaccination_date;
 	}
@@ -42,14 +39,6 @@ public class CovidInfo {
 
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
-	}
-
-	public boolean isVaccinated() {
-		return vaccinated;
-	}
-
-	public void setVaccinated(boolean vaccinated) {
-		this.vaccinated = vaccinated;
 	}
 
 	public String getVaccine_type() {
