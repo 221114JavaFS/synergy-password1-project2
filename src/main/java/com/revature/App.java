@@ -1,7 +1,9 @@
 package com.revature;
 
 
+import com.revature.controllers.ClaimController;
 import com.revature.controllers.Controller;
+import com.revature.controllers.CovidInfoController;
 import com.revature.controllers.UserController;
 
 import io.javalin.Javalin;
@@ -17,7 +19,14 @@ private static Javalin app;
 			ctx.status(200);
 		} );
 		
-		configure(new UserController());//controllers go in here
+		
+		/*app = Javalin.create((config)->{           //will be for when we are adding the front-end files
+			config.staticFiles.add((staticFiles)->{
+				staticFiles.directory = "/webapp";
+			});
+		});*/
+		
+		configure(new UserController(), new ClaimController(), new CovidInfoController());
 		
 		app.start();
 		
