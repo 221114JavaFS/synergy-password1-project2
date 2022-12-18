@@ -3,6 +3,8 @@ package com.revature.controllers;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
+import java.time.format.DateTimeFormatter;
+
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 import jakarta.servlet.http.HttpSession;
@@ -89,6 +91,7 @@ public class UserController implements Controller{
 	public void addRoutes(Javalin app) {
 		app.get("/login", login);
 		app.post("/newuser", createAccount);
+		app.get("/allaccounts", viewAllAccounts);
 		
 	}
 

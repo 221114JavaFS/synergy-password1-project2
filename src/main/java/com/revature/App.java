@@ -2,6 +2,7 @@ package com.revature;
 
 
 import com.revature.controllers.Controller;
+import com.revature.controllers.UserController;
 
 import io.javalin.Javalin;
 
@@ -16,7 +17,7 @@ private static Javalin app;
 			ctx.status(200);
 		} );
 		
-		configure();//controllers go in here
+		configure(new UserController());//controllers go in here
 		
 		app.start();
 		
