@@ -26,22 +26,22 @@ public class CovidInfoController implements Controller {
 		}
 	};
 	
-	private Handler updateCovidInfo = (ctx) -> {
-		CovidInfo newInfo = ctx.bodyAsClass(CovidInfo.class);
-		String idString = ctx.pathParam("id");
-		
-		int id = 1;
-		try {
-			id = Integer.parseInt(idString);
-		} catch (NumberFormatException e) {
-			ctx.status(422);
-			return;
-		}
-		// SWAP OUT THE OBJECT YA GOTTA CHANGE THE PARAMS
-		ctx.json(covidInfoService.updateUserCovidInfo(newInfo));  //CHANGE TO AN ENTIRE OBJECT
-		ctx.status(200);
-		
-	};
+//	private Handler updateCovidInfo = (ctx) -> {
+//		CovidInfo newInfo = ctx.bodyAsClass(CovidInfo.class);
+//		String idString = ctx.pathParam("id");
+//		
+//		int id = 1;
+//		try {
+//			id = Integer.parseInt(idString);
+//		} catch (NumberFormatException e) {
+//			ctx.status(422);
+//			return;
+//		}
+//		// SWAP OUT THE OBJECT YA GOTTA CHANGE THE PARAMS
+//		ctx.json(covidInfoService.updateUserCovidInfo(newInfo));  //CHANGE TO AN ENTIRE OBJECT
+//		ctx.status(200);
+//		
+//	};
 
 	@Override
 	public void addRoutes(Javalin app) {
