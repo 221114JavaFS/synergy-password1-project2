@@ -11,7 +11,7 @@ public class CovidInfoService {
 	private CovidInfoDAO covidInfoDAO = new CovidInfoDAOImpl();
 	
 	
-	public List<CovidInfo> GetUsersCovidInfoWithId(int id) {
+	public List<CovidInfo> getUsersCovidInfoWithId(int id) {
 		return covidInfoDAO.getUserCovidInfoById(id);
 	}
 	
