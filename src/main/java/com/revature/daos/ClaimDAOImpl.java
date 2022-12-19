@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,11 +115,17 @@ public class ClaimDAOImpl implements ClaimDAO {
 	public void updateClaim(String newStatus, int claim_id) {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			
-			String sql = "UPDATE claim SET status=? WHERE claim_id=?";
+			String sql = "UPDATE claim SET status=?, decision_date=? WHERE claim_id=?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setString(1, newStatus);
-			statement.setInt(2, claim_id);
+			statement.setInt(3, claim_id);
+			
 			//add a set date for decision date
+			
+			LocalDate dateObj = LocalDate.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			String date = dateObj.format(formatter);
+			statement.setString(2, date);
 			statement.execute();
 			
 

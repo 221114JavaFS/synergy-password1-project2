@@ -20,7 +20,7 @@ public class PolicyClaim {
 		
 		this.submission_date =  date; 
 	}
-
+	
 
 	public String getDescription() {
 		return description;

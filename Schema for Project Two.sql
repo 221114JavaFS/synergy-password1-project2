@@ -46,7 +46,7 @@ create table claim(
 	amount float check (amount>0),
 	status varchar(20) default 'pending',
 	submission_date varchar(20) NOT NULL,
-	decision_date DATE default null,
+	decision_date varchar(20) default null,
 	foreign key (user_id) references user_info(user_id)
 );
 
@@ -81,4 +81,3 @@ INSERT INTO claim(user_id, claim_description, amount, submission_date) VALUES
 SELECT * FROM claim WHERE user_id=2;
 UPDATE claim SET status='accepted' WHERE claim_id=2;
 SELECT * from claim where NOT user_id=2;
-
