@@ -1,6 +1,7 @@
 package com.revature.daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,12 +31,12 @@ public class ClaimDAOImpl implements ClaimDAO {
 				PolicyClaim claim = new PolicyClaim();
 				claim.setClaim_id(result.getInt("claim_id"));
 				claim.setUser_id(result.getInt("user_id"));
-				claim.setDescription("claim_description");
+				claim.setDescription(result.getString("claim_description"));
 				claim.setAmount(result.getDouble("amount"));
 				claim.setStatus(result.getString("status"));
 				//these might need to be checked when null
 				claim.setSubmission_date(result.getDate("submission_date"));
-				claim.setDecision_date(result.getDate("decidion_date"));
+				claim.setDecision_date(result.getDate("decision_date"));
 				
 				list.add(claim);
 			}
@@ -59,7 +60,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 			statement.setInt(index++, 2);//all claims will have an user_id of 12 CHANGER THIS later!!!
 			statement.setString(index++, newClaim.getDescription());
 			statement.setDouble(index++, newClaim.getAmount());
-			statement.setDate(index++,newClaim.getSubmission_date());
+			statement.setDate(index++, newClaim.getSubmission_date());
 			//status, claim_id, and decision_date will be set to default values in postgres
 			statement.execute();
 			
@@ -86,12 +87,12 @@ public class ClaimDAOImpl implements ClaimDAO {
 				PolicyClaim claim = new PolicyClaim();
 				claim.setClaim_id(result.getInt("claim_id"));
 				claim.setUser_id(result.getInt("user_id"));
-				claim.setDescription("claim_description");
+				claim.setDescription(result.getString("claim_description"));
 				claim.setAmount(result.getDouble("amount"));
 				claim.setStatus(result.getString("status"));
 				//these might need to be checked when null
 				claim.setSubmission_date(result.getDate("submission_date"));
-				claim.setDecision_date(result.getDate("decidion_date"));
+				claim.setDecision_date(result.getDate("decision_date"));
 				
 				list.add(claim);
 			}

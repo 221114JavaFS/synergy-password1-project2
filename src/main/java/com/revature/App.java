@@ -1,6 +1,7 @@
 package com.revature;
 
 
+import com.revature.controllers.ClaimController;
 import com.revature.controllers.Controller;
 
 import io.javalin.Javalin;
@@ -16,7 +17,7 @@ private static Javalin app;
 			ctx.status(200);
 		} );
 		
-		configure();//controllers go in here
+		configure(new ClaimController());//controllers go in here
 		
 		app.start();
 		
