@@ -17,8 +17,8 @@ public class ConnectionUtil {
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 				return null;
-			}
-			// making it 5432 for now
+			}// DONT DELETE COMMENT-> jdbc:postgresql://localhost:5433/projecttwo" this is so I cannot connect to my local db
+			// making it 5432 for now    
 			String url = "jdbc:postgresql://localhost:5432/postgres"; // 
 			// I think this password for the connection is fine for now 
 			String username = "postgres"; //

@@ -44,7 +44,7 @@ public class ClaimController implements Controller{
 		// TODO Auto-generated method stub
 		app.get("/claims", getClaims);
 		app.post("/claims", addClaim);
-		app.post("/update", updateClaim);
+		app.patch("/update", updateClaim); // should be patch
 		app.get("/myclaims", getMyClaims);
 		
 	}
