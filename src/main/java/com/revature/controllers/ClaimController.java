@@ -27,7 +27,7 @@ public class ClaimController implements Controller{
 	
 	
 	private Handler updateClaim =(ctx)->{
-		String newStatus = ctx.body();
+		String newStatus = ctx.body();//this might be changed later so that it's a dropdown/radio button instead
 		claimsService.updateClaim(newStatus, 2);//two should be changed by the login feature stuff
 		ctx.status(200);
 	};

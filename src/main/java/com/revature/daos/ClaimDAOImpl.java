@@ -111,7 +111,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setString(1, newStatus);
 			statement.setInt(2, claim_id);
-
+			//add a set date for decision date
 			statement.execute();
 			
 			
