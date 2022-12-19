@@ -26,9 +26,10 @@ public class ClaimController implements Controller{
 	
 	
 	private Handler updateClaim =(ctx)->{
-		String newStatus = ctx.body();//this might be changed later so that it's a dropdown/radio button instead
-		//this only updates claim 2 for now, need to change it so that the input also takes in a claim number
-		claimsService.updateClaim(newStatus, 2);//two should be changed by the login feature stuff
+		PolicyClaim claimInfo = ctx.bodyAsClass(PolicyClaim.class);
+		String newStatus = claimInfo.getStatus();
+		int claimId=claimInfo.getClaim_id();
+		claimsService.updateClaim(newStatus, claimId);
 		ctx.status(200);
 	};
 	
