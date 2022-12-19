@@ -27,7 +27,7 @@ private static Javalin app;
 			});
 		});*/
 		
-		configure(new UserController(), new ClaimController(), new CovidInfoController(), new ClaimController());
+		configure(new UserController(), new ClaimController(), new CovidInfoController());
 
 		
 		app.start();

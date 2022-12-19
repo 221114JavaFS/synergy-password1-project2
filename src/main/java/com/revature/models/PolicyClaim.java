@@ -1,6 +1,6 @@
 package com.revature.models;
-
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PolicyClaim {
 	private int claim_id;
@@ -8,24 +8,19 @@ public class PolicyClaim {
 	private String description;
 	private double amount;
 	private String status="pending";
-	private Date submission_date;
-	private Date decision_date=null;
+	private String submission_date;
+	private String decision_date=null;
 	
-	
+	//only need this constructor because the values are being set instead of fed through as parameters
 	public PolicyClaim() {
-		this.submission_date =  new Date(System.currentTimeMillis()); 
+		LocalDate dateObj = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String date = dateObj.format(formatter);
+		
+		
+		this.submission_date =  date; 
 	}
-	
-	
-	
-	public PolicyClaim(String description, int user_id, double amount) {
-		//claim id should be generated and set
-		this.description = description;
-		this.user_id = user_id;
-		this.amount = amount;
-		this.submission_date =  new Date(System.currentTimeMillis()); 
-		//decision date will get set when decision status is changed.
-	}
+
 
 	public String getDescription() {
 		return description;
@@ -67,19 +62,19 @@ public class PolicyClaim {
 		this.user_id = user_id;
 	}
 
-	public Date getSubmission_date() {
+	public String getSubmission_date() {
 		return submission_date;
 	}
 
-	public void setSubmission_date(Date submission_date) {
+	public void setSubmission_date(String submission_date) {
 		this.submission_date = submission_date;
 	}
 
-	public Date getDecision_date() {
+	public String getDecision_date() {
 		return decision_date;
 	}
 
-	public void setDecision_date(Date decision_date) {
+	public void setDecision_date(String decision_date) {
 		this.decision_date = decision_date;
 	}
 	

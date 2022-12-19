@@ -6,13 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.PolicyClaim;
 import com.revature.utils.ConnectionUtil;
 
+import java.text.SimpleDateFormat;
+
 public class ClaimDAOImpl implements ClaimDAO {
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/d");
 
 	//maybe add a getClaimsMinusAgent --for agents not to see their own claims
 	//essentially the same except sql= "SELECT * FROM claim WHERE NOT user_id= "+ user_id
@@ -26,6 +30,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 			ResultSet result = statement.executeQuery(sql);
 			List<PolicyClaim> list = new ArrayList<>();
 			
+			
 			//got through results to get info from claims and make a list from them. 
 			while (result.next()) {
 				PolicyClaim claim = new PolicyClaim();
@@ -35,8 +40,9 @@ public class ClaimDAOImpl implements ClaimDAO {
 				claim.setAmount(result.getDouble("amount"));
 				claim.setStatus(result.getString("status"));
 				//these might need to be checked when null
-				claim.setSubmission_date(result.getDate("submission_date"));
-				claim.setDecision_date(result.getDate("decision_date"));
+				
+				claim.setSubmission_date(result.getString("submission_date"));
+				claim.setDecision_date(result.getString("decision_date"));
 				
 				list.add(claim);
 			}
@@ -60,7 +66,7 @@ public class ClaimDAOImpl implements ClaimDAO {
 			statement.setInt(index++, 2);//all claims will have an user_id of 12 CHANGER THIS later!!!
 			statement.setString(index++, newClaim.getDescription());
 			statement.setDouble(index++, newClaim.getAmount());
-			statement.setDate(index++, newClaim.getSubmission_date());
+			statement.setString(index++, newClaim.getSubmission_date());
 			//status, claim_id, and decision_date will be set to default values in postgres
 			statement.execute();
 			
@@ -91,8 +97,8 @@ public class ClaimDAOImpl implements ClaimDAO {
 				claim.setAmount(result.getDouble("amount"));
 				claim.setStatus(result.getString("status"));
 				//these might need to be checked when null
-				claim.setSubmission_date(result.getDate("submission_date"));
-				claim.setDecision_date(result.getDate("decision_date"));
+				claim.setSubmission_date(result.getString("submission_date"));
+				claim.setDecision_date(result.getString("decision_date"));
 				
 				list.add(claim);
 			}
@@ -114,7 +120,6 @@ public class ClaimDAOImpl implements ClaimDAO {
 			statement.setInt(2, claim_id);
 			//add a set date for decision date
 			statement.execute();
-			
 			
 
 		} catch (SQLException e) {
