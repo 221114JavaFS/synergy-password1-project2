@@ -7,12 +7,11 @@ import com.revature.services.ClaimsService;
 
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
-import jakarta.servlet.http.HttpSession;
 
 public class ClaimController implements Controller{
 	private ClaimsService claimsService = new ClaimsService();
 	
-	//don't add sessions just jest because jwt
+	//don't add sessions just yet because jwt
 	private Handler getClaims = (ctx) -> {
 		List<PolicyClaim> list = claimsService.getClaims();
 		ctx.json(list);

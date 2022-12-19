@@ -10,14 +10,15 @@ public class PolicyClaim {
 	private String status="pending";
 	private Date submission_date;
 	private Date decision_date=null;
+	
+	
 	public PolicyClaim() {
-		
+		this.submission_date =  new Date(System.currentTimeMillis()); 
 	}
 	
 	
 	
 	public PolicyClaim(String description, int user_id, double amount) {
-		super();
 		//claim id should be generated and set
 		this.description = description;
 		this.user_id = user_id;
