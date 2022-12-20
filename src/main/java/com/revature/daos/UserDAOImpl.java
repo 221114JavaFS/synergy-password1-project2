@@ -124,4 +124,31 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	@Override
+	public boolean resetPassword(User user) {
+		try (Connection connection = ConnectionUtil.getConnection()) { //checks to be sure email and ssn match
+			PreparedStatement checker = connection.prepareStatement("SELECT * FROM user_info WHERE email = ? and ssn = ?;");
+			checker.setString(1, user.getEmail());
+			checker.setString(2, user.getSocialSecurityNumber());
+			ResultSet result = checker.executeQuery();
+			
+			if(result.next()) { //if account info with email and ssn match, password updates
+				PreparedStatement statement = connection.prepareStatement(
+						"UPDATE user_info SET password = ? WHERE email = ?;");
+				statement.setString(1, user.getPassword());
+				statement.setString(2, user.getEmail());
+				int resultTwo = statement.executeUpdate();
+				
+				return true; //password was updated
+				
+			}else {
+				return false; //password was not updated
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

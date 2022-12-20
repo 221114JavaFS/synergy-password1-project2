@@ -19,7 +19,7 @@ public class ConnectionUtil {
 				return null;
 			}// DONT DELETE COMMENT-> jdbc:postgresql://localhost:5433/projecttwo" this is so I cannot connect to my local db
 			// making it 5432 for now    
-			String url = "jdbc:postgresql://localhost:5432/postgres"; // 
+			String url = "jdbc:postgresql://localhost:5432/postgres";
 			// I think this password for the connection is fine for now 
 			String username = "postgres"; //
 			String password = "password"; // 

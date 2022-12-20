@@ -22,4 +22,8 @@ public class UserService {
 	public List<User> viewAllAccounts(){
 		return userDao.viewAllUsers();
 	}
+	
+	public boolean updatePassword(User user) {
+		return userDao.resetPassword(user);
+	}
 }

@@ -87,11 +87,30 @@ public class UserController implements Controller{
 	};
 	
 	
+	Handler updatePassword = (ctx) ->{
+		User user = ctx.bodyAsClass(User.class);
+		if(user.getEmail().isEmpty() || user.getPassword().isEmpty()||
+				user.getSocialSecurityNumber().isEmpty()){
+			
+			ctx.json("You must fill in all fields!");
+			ctx.status(400);
+		}else {
+			if(userService.updatePassword(user)) {
+				ctx.json("Password has been reset!");
+				ctx.status(200);
+			}else {
+				ctx.json("Password has not been reset!");
+			}
+		}
+	};
+	
+	
 	@Override
 	public void addRoutes(Javalin app) {
 		app.get("/login", login);
 		app.post("/newuser", createAccount);
 		app.get("/allaccounts", viewAllAccounts);
+		app.patch("/updatepassword",updatePassword);
 		
 	}
 

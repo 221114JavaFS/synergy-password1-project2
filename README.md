@@ -28,3 +28,12 @@ GET http://localhost:8080/login
 }
 
 
+Reset password
+PATCH http://localhost:8080/updatepassword
+{
+    "email":"",
+    "socialSecurityNumber": "",
+    "password":""
+}
+
+

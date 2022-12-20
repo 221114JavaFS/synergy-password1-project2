@@ -56,6 +56,18 @@ public class User {
 	}
 
 
+	
+	
+	
+	//Constructor for resetting password
+	public User(String email, String socialSecurityNumber, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.socialSecurityNumber = socialSecurityNumber;
+	}
+
+
 
 	public User() {
 		super();

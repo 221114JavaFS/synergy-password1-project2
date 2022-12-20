@@ -11,5 +11,7 @@ public interface UserDAO {
 	public abstract User login(User user);
 	
 	public abstract List<User> viewAllUsers();
+	
+	public abstract boolean resetPassword(User user);
 
 }
