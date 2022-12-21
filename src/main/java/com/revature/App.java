@@ -19,19 +19,9 @@ private static Javalin app;
 			ctx.status(200);
 		} );
 		
-
-		
-		/*app = Javalin.create((config)->{           //will be for when we are adding the front-end files
-			config.staticFiles.add((staticFiles)->{
-				staticFiles.directory = "/webapp";
-			});
-		});*/
-		
 		configure(new UserController(), new ClaimController(), new CovidInfoController());
 
-		
 		app.start();
-		
 	}
 
 	public static void configure(Controller... controllers) {
